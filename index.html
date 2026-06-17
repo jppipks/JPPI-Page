@@ -8,37 +8,71 @@
 <title>JPPI Politeknik Kuching Sarawak</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 <style>
 
 *{
+margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
 background:#f8f9fa;
+overflow-x:hidden;
 }
 
+/* SCROLL INDICATOR */
+
+#scrollIndicator{
+position:fixed;
+top:0;
+left:0;
+width:0%;
+height:4px;
+background:linear-gradient(to right,#d4af37,#ffd700);
+z-index:9999;
+}
+
+/* NAVBAR */
+
 .navbar{
-background:#0f5132;
+background:rgba(22, 85, 100, 0.95);
+backdrop-filter:blur(10px);
 }
 
 .navbar-brand{
 font-weight:700;
+font-size:1.3rem;
 }
+
+.logo-navbar{
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:3px;
+}
+
+/* HERO */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url('https://images.unsplash.com/photo-1512632578888-169bbbc64f33');
+linear-gradient(
+rgba(0,0,0,.55),
+rgba(0,0,0,.70)
+),
+url(images/MASJID.png);
+
 background-size:cover;
 background-position:center;
+background-attachment:fixed;
+
 display:flex;
 align-items:center;
 justify-content:center;
@@ -46,18 +80,59 @@ text-align:center;
 color:white;
 }
 
+.hero-content{
+max-width:800px;
+padding:20px;
+}
+
 .hero h1{
-font-size:4rem;
+font-size:5rem;
 font-weight:700;
+animation:fadeUp 1s ease;
+}
+
+.hero h3{
+animation:fadeUp 1.5s ease;
 }
 
 .hero p{
 font-size:1.2rem;
+margin-top:15px;
+animation:fadeUp 2s ease;
 }
+
+.hero .btn{
+padding:12px 30px;
+border-radius:30px;
+font-weight:600;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.hero-logo{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:50%;
+background:white;
+padding:8px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+/* SECTION TITLE */
 
 .section-title{
 font-weight:700;
-color:#0f5132;
+color:rgba(22, 85, 100, 0.95);
 margin-bottom:40px;
 position:relative;
 }
@@ -72,8 +147,12 @@ margin:auto;
 margin-top:10px;
 }
 
+
+/* CARD */
+
 .card{
 border:none;
+border-radius:20px;
 transition:.4s;
 }
 
@@ -81,56 +160,183 @@ transition:.4s;
 transform:translateY(-10px);
 }
 
-.icon-box{
-font-size:60px;
-color:#0f5132;
+
+/* AKTIVITI CAROUSEL */
+
+.swiper{
+padding-bottom:60px;
 }
 
-.timeline{
-border-left:4px solid #0f5132;
-padding-left:25px;
+.activity-card{
+position:relative;
+height:450px;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
-.timeline-item{
-margin-bottom:30px;
+.activity-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s;
 }
 
-.timeline-item h5{
-color:#0f5132;
+.activity-card:hover img{
+transform:scale(1.1);
 }
 
-.social-btn a{
-margin:10px;
-font-size:28px;
+.activity-overlay{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+padding:25px;
+background:linear-gradient(
+transparent,
+rgba(0,0,0,.9)
+);
 color:white;
 }
 
+.activity-date{
+display:inline-block;
+background:#d4af37;
+color:black;
+padding:6px 15px;
+border-radius:30px;
+font-size:13px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.activity-overlay h4{
+font-weight:700;
+margin-bottom:8px;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+color:#d4af37;
+}
+
+.swiper-pagination-bullet-active{
+background:#d4af37;
+}
+
+@media(max-width:768px){
+
+.activity-card{
+height:300px;
+}
+
+}
+
+/* SOCIAL */
+
+.social-section{
+background:rgba(22, 85, 100, 0.95);
+}
+
+.social-btn a{
+width:60px;
+height:60px;
+display:inline-flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:white;
+color:rgba(22, 85, 100, 0.95);
+font-size:24px;
+margin:10px;
+text-decoration:none;
+transition:.3s;
+}
+
+.social-btn a:hover{
+background:#d4af37;
+transform:translateY(-5px);
+}
+
+/* FOOTER */
+
 .footer{
-background:#0f5132;
+background:rgba(15, 58, 69, 0.95);
 color:white;
 padding:20px;
 }
 
-.organization img{
-max-width:100%;
-border-radius:15px;
+/* BACK TO TOP */
+
+#backToTop{
+position:fixed;
+bottom:25px;
+right:25px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:rgba(22, 85, 100, 0.95);
+color:white;
+font-size:20px;
+display:none;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+z-index:999;
 }
+
+#backToTop:hover{
+background:#d4af37;
+transform:translateY(-5px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero h3{
+font-size:1.2rem;
+}
+
+.stats h2{
+font-size:2rem;
+}
+
+}
+
 
 </style>
 </head>
 
 <body>
 
+<div id="scrollIndicator"></div>
+
 <!-- NAVBAR -->
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
 <div class="container">
 
-<a class="navbar-brand" href="#">
-JPPI PKS
+<a class="navbar-brand d-flex align-items-center" href="#">
+
+<img src="images/LOGO JPPI SQUARE.png"
+alt="Logo JPPI"
+width="45"
+height="45"
+class="me-2 logo-navbar">
+
+<span>JPPI PKS</span>
+
 </a>
 
-<button class="navbar-toggler" data-bs-toggle="collapse"
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
 data-bs-target="#menu">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -152,15 +358,11 @@ data-bs-target="#menu">
 </li>
 
 <li class="nav-item">
-<a class="nav-link" href="#org">Organisasi</a>
-</li>
-
-<li class="nav-item">
 <a class="nav-link" href="#aktiviti">Aktiviti</a>
 </li>
 
 <li class="nav-item">
-<a class="nav-link" href="#hubungi">Hubungi</a>
+<a class="nav-link" href="#hubungi">Sosial Media</a>
 </li>
 
 </ul>
@@ -173,8 +375,10 @@ data-bs-target="#menu">
 
 <section class="hero">
 
-<div>
+<div class="hero-content">
 
+<img src="images/LOGO JPPI SQUARE.png"
+class="hero-logo mb-4">
 <h1>JPPI PKS</h1>
 
 <h3>Jawatankuasa Pelajar Pusat Islam</h3>
@@ -183,13 +387,15 @@ data-bs-target="#menu">
 Politeknik Kuching Sarawak
 </p>
 
-<a href="#about" class="btn btn-warning btn-lg mt-3">
+<a href="#about" class="btn btn-warning mt-3">
 Ketahui Lebih Lanjut
 </a>
 
 </div>
 
 </section>
+
+
 
 <!-- PENGENALAN -->
 
@@ -201,31 +407,11 @@ Ketahui Lebih Lanjut
 Pengenalan JPPI
 </h2>
 
-<div class="row align-items-center">
-
-<div class="col-md-6">
-
-<p class="lead">
+<p class="lead text-center">
 
 Jawatankuasa Pelajar Pusat Islam (JPPI) merupakan sebuah jawatankuasa yang membantu Pusat Islam Masjid Al-Muhandisin dalam mengurus tadbir hal ehwal pelajar muslim di Politeknik Kuching Sarawak.
 
 </p>
-
-<p>
-
-JPPI berada di bawah naungan Jawatankuasa Pusat Islam dan berfungsi sebagai penggerak utama program pembangunan sahsiah, kerohanian serta kebajikan pelajar muslim.
-
-</p>
-
-</div>
-
-<div class="col-md-6 text-center">
-
-<i class="bi bi-moon-stars-fill icon-box"></i>
-
-</div>
-
-</div>
 
 </div>
 
@@ -244,39 +430,34 @@ Visi • Misi • Objektif
 <div class="row g-4">
 
 <div class="col-md-4">
-<div class="card h-100 shadow">
+<div class="card shadow h-100">
 <div class="card-body text-center">
 <h4>Visi</h4>
-<p>
-Menjadi Pusat Keunggulan Islam ke arah melahirkan insan cemerlang serta memiliki nilai-nilai hidup yang berteraskan al-Quran dan Sunnah.
-</p>
+<p>Menjadi Pusat Keunggulan Islam ke arah melahirkan insan cemerlang serta memiliki nilai hidup berteraskan al-Quran dan Sunnah.</p>
 </div>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card h-100 shadow">
+<div class="card shadow h-100">
 <div class="card-body text-center">
 <h4>Misi</h4>
-<p>
-Membangunkan pelajar yang berilmu, berakhlak dan berdaya saing melalui aktiviti kerohanian dan pembangunan insan.
-</p>
+<p>Membangunkan pelajar yang berilmu, berakhlak dan berdaya saing melalui aktiviti kerohanian.</p>
 </div>
 </div>
 </div>
 
 <div class="col-md-4">
-<div class="card h-100 shadow">
+<div class="card shadow h-100">
 <div class="card-body text-center">
 <h4>Objektif</h4>
-<p>
-Mengimarahkan Pusat Islam dan menggalakkan penglibatan pelajar dalam program dakwah, kuliah serta solat berjemaah.
-</p>
+<p>Mengimarahkan Pusat Islam dan menggalakkan penglibatan pelajar dalam aktiviti dakwah dan kerohanian.</p>
 </div>
 </div>
 </div>
 
 </div>
+
 </div>
 
 </section>
@@ -291,42 +472,17 @@ Mengimarahkan Pusat Islam dan menggalakkan penglibatan pelajar dalam program dak
 Rakan Pusat Islam (RAPI)
 </h2>
 
-<p class="text-center lead">
+<p class="lead text-center">
 
-RAPI merupakan sebuah kumpulan sukarelawan pelajar yang bernaung di bawah JPPI.
+RAPI merupakan kumpulan sukarelawan pelajar yang bernaung di bawah JPPI.
 
 </p>
 
 <p class="text-center">
 
-RAPI berperanan membantu melaksanakan aktiviti kerohanian yang bertujuan memupuk semangat ukhuwah, kerjasama serta penglibatan aktif pelajar.
+RAPI berperanan membantu melaksanakan aktiviti kerohanian bagi memupuk ukhuwah, kerjasama dan penglibatan aktif pelajar.
 
 </p>
-
-</div>
-
-</section>
-
-<!-- ORGANISASI -->
-
-<section class="py-5 bg-light" id="org">
-
-<div class="container">
-
-<h2 class="text-center section-title">
-Carta Organisasi JPPI
-</h2>
-
-<div class="organization text-center">
-
-<img src="images/carta-jppi.png"
-alt="Carta Organisasi">
-
-<p class="mt-3">
-Sila gantikan dengan carta organisasi rasmi JPPI.
-</p>
-
-</div>
 
 </div>
 
@@ -334,7 +490,7 @@ Sila gantikan dengan carta organisasi rasmi JPPI.
 
 <!-- AKTIVITI -->
 
-<section class="py-5" id="aktiviti">
+<section class="py-5 bg-light" id="aktiviti">
 
 <div class="container">
 
@@ -342,32 +498,152 @@ Sila gantikan dengan carta organisasi rasmi JPPI.
 Aktiviti JPPI
 </h2>
 
-<div class="timeline">
+<p class="text-center text-muted mb-5">
+Program dan aktiviti yang telah dianjurkan oleh JPPI.
+</p>
 
-<div class="timeline-item">
-<h5>15 Januari 2025</h5>
-<p>Kuliah Perdana Semester.</p>
+<div class="swiper mySwiper">
+
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti1.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+15 Januari 2025
+</span>
+
+<h4>Kuliah Perdana Semester</h4>
+
+<p>Pembukaan rasmi aktiviti semester.</p>
+
 </div>
 
-<div class="timeline-item">
-<h5>20 Februari 2025</h5>
-<p>Program Bacaan Yasin & Tahlil.</p>
 </div>
 
-<div class="timeline-item">
-<h5>12 Mac 2025</h5>
-<p>Iftar Jamaie & Tadarrus Ramadan.</p>
 </div>
 
-<div class="timeline-item">
-<h5>25 April 2025</h5>
-<p>Program Kepimpinan Sahsiah Pelajar.</p>
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti2.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+20 Februari 2025
+</span>
+
+<h4>Bacaan Yasin & Tahlil</h4>
+
+<p>Program kerohanian warga kampus.</p>
+
 </div>
 
-<div class="timeline-item">
-<h5>10 Mei 2025</h5>
-<p>Gotong Royong Masjid Al-Muhandisin.</p>
 </div>
+
+</div>
+
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti3.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+12 Mac 2025
+</span>
+
+<h4>Iftar Jamaie Ramadan</h4>
+
+<p>Majlis berbuka puasa dan tadarrus.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti4.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+25 April 2025
+</span>
+
+<h4>Kepimpinan Sahsiah Pelajar</h4>
+
+<p>Pembangunan kepimpinan mahasiswa.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti5.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+10 Mei 2025
+</span>
+
+<h4>Gotong-Royong Masjid</h4>
+
+<p>Keceriaan dan kebersihan masjid.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="swiper-slide">
+
+<div class="activity-card">
+
+<img src="aktiviti6.jpg">
+
+<div class="activity-overlay">
+
+<span class="activity-date">
+15 Jun 2025
+</span>
+
+<h4>Forum Perdana</h4>
+
+<p>Forum kerohanian bersama panel jemputan.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="swiper-pagination"></div>
+
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
 
 </div>
 
@@ -377,31 +653,19 @@ Aktiviti JPPI
 
 <!-- SOCIAL -->
 
-<section class="py-5 text-white"
-style="background:#0f5132"
-id="hubungi">
+<section class="social-section py-5 text-white" id="hubungi">
 
 <div class="container text-center">
 
 <h2>Ikuti Kami</h2>
 
-<p>
-Media Sosial Rasmi JPPI Politeknik Kuching Sarawak
-</p>
+<p>Media Sosial Rasmi JPPI Politeknik Kuching Sarawak</p>
 
 <div class="social-btn">
 
-<a href="#">
-<i class="bi bi-facebook"></i>
-</a>
-
-<a href="#">
-<i class="bi bi-instagram"></i>
-</a>
-
-<a href="#">
-<i class="bi bi-tiktok"></i>
-</a>
+<a href="#"><i class="bi bi-facebook"></i></a>
+<a href="https://www.instagram.com/jppipks?utm_source=qr"><i class="bi bi-instagram"></i></a>
+<a href="https://www.tiktok.com/@jppipks?_r=1&_t=ZS-97AOSM7ApnB"><i class="bi bi-tiktok"></i></a>
 
 </div>
 
@@ -419,7 +683,84 @@ Politeknik Kuching Sarawak
 
 </footer>
 
+<button id="backToTop">
+<i class="bi bi-arrow-up"></i>
+</button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+window.addEventListener("scroll",function(){
+
+let winScroll=document.documentElement.scrollTop;
+
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+let scrolled=(winScroll/height)*100;
+
+document.getElementById("scrollIndicator").style.width=scrolled+"%";
+
+let btn=document.getElementById("backToTop");
+
+if(winScroll>300){
+btn.style.display="block";
+}else{
+btn.style.display="none";
+}
+
+});
+
+document.getElementById("backToTop").onclick=function(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+
+var swiper = new Swiper(".mySwiper", {
+
+slidesPerView:1,
+spaceBetween:25,
+
+autoplay:{
+delay:3000,
+disableOnInteraction:false,
+},
+
+pagination:{
+el:".swiper-pagination",
+clickable:true,
+},
+
+navigation:{
+nextEl:".swiper-button-next",
+prevEl:".swiper-button-prev",
+},
+
+breakpoints:{
+
+768:{
+slidesPerView:2,
+},
+
+1200:{
+slidesPerView:3,
+}
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
